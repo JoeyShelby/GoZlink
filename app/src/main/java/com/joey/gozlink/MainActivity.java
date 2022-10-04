@@ -28,23 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //zlink 包名
-        String packageName = "com.zjinnova.zlink";
-
-        PackageManager packageManager = getPackageManager();
-        try {
-            packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES); //检测 zLink 是否安装，未安装则进入 catch ，重新选择启动器
-            startActivity(packageManager.getLaunchIntentForPackage(packageName)); //启动 zlink
-        } catch (PackageManager.NameNotFoundException e) {  //报错，关闭程序
-            e.printStackTrace();
-            Toast.makeText(this, "未检测到 "+ packageName, Toast.LENGTH_LONG).show();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException interruptedException) {
-                interruptedException.printStackTrace();
-            }
-            this.finish();
-        }
+        // 打开 app 后立即打开 zlink
+        openApp("com.zjinnova.zlink");
 
         /*长按切换启动器*/
         findViewById(R.id.backgroundImage).setOnLongClickListener(new View.OnLongClickListener() {
@@ -58,6 +43,35 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        /*单击打开 zlink*/
+        findViewById(R.id.backgroundImage).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openApp("com.zjinnova.zlink");
+            }
+        });
+    }
+
+    /**
+     * 根据包名打开 app
+     * @param packageName 包名
+     */
+    private void openApp(String packageName) {
+        PackageManager packageManager = getPackageManager();
+        try {
+            packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES); //检测 packageName 是否安装，未安装则进入 catch ，重新选择启动器
+            startActivity(packageManager.getLaunchIntentForPackage(packageName)); //启动 packageName
+        } catch (PackageManager.NameNotFoundException e) {  //报错，关闭程序
+            e.printStackTrace();
+            Toast.makeText(this, "未检测到 "+ packageName, Toast.LENGTH_LONG).show();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException interruptedException) {
+                interruptedException.printStackTrace();
+            }
+            this.finish();
+        }
     }
 
 }

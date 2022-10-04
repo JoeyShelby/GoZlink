@@ -5,10 +5,10 @@ plugins {
 android {
     signingConfigs {
         debug {
-            storeFile file('D:\\Applications\\Android\\keystore\\joeykeys.jks')
-            storePassword '*****'
-            keyAlias 'keyJoeyNew'
-            keyPassword '*****'
+            storeFile file('D:\\Applications\\androidstudio\\keys\\keys.jks')
+            storePassword '227685'
+            keyAlias 'keyJoey'
+            keyPassword '227685'
         }
     }
     compileSdk 31
@@ -18,7 +18,7 @@ android {
         minSdk 23
         targetSdk 31
         versionCode 1
-        versionName "1.0"
+        versionName "2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
