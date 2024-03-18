@@ -1,5 +1,6 @@
 # GoZlink
 可直接在 releases 中下载最新 apk 文件安装到车机
+* 需要将默认桌面 launcher（启动器）更换为 GoZlink *
 
 掌讯车机开机自动打开 zLink 连接 Carplay
 
