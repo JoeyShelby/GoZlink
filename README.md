@@ -1,4 +1,6 @@
 # GoZlink
+可直接在 releases 中下载最新 apk 文件安装到车机
+
 掌讯车机开机自动打开 zLink 连接 Carplay
 
 开发给自己的掌讯车机用的，能实现 **开机自动打开 zLink**
